@@ -26,8 +26,7 @@ from langchain_experimental.utilities import PythonREPL
 from langchain.chains import ConversationChain
 from langchain.memory import ConversationBufferMemory
 from langchain_core.prompts import PromptTemplate
-import sqlite3
-import pysqlite3
+__import__('pysqlite3')
 import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
