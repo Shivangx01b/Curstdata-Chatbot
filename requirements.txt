@@ -171,7 +171,6 @@ lancedb==0.5.7
 langchain
 langchain-cohere
 langchain-community
-langchain-core2
 langchain-experimental
 langchain-google-genai
 langchain-openai
