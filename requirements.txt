@@ -1,4 +1,4 @@
-crewai==0.95.0
+crewai==0.74.0
 crewai_tools==0.25.8
 langchain==0.3.14
 langchain_community==0.3.14
