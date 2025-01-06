@@ -1,0 +1,10 @@
+streamlit
+streamlit-chat
+streamlit-extras
+langchain-openai
+langchain-community
+langchain-core
+langchain-experimental
+crewai
+crewai-tools
+faiss-cpu
