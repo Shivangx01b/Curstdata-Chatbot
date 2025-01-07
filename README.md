@@ -1,8 +1,7 @@
 <h1 align="center">
   <br>
-  <a href=""><img src="https://github.com/Shivangx01b/Curstdata-Chatbot/blob/main/static/this.png" alt="" width="200px;"></a>
+  <a href=""><img src="https://github.com/Shivangx01b/Curstdata-Chatbot/blob/main/static/this.PNG" alt="" width="200px;"></a>
   <br>
-  <img src="https://img.shields.io/github/languages/top/Shivangx01b/GoNN?style=flat-square">
   <a href="https://twitter.com/intent/follow?screen_name=shivangx01b"><img src="https://img.shields.io/twitter/follow/shivangx01b?style=flat-square"></a>
 </h1>
 
