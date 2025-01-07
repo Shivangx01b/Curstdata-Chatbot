@@ -26,12 +26,10 @@ from langchain_experimental.utilities import PythonREPL
 from langchain.chains import ConversationChain
 from langchain.memory import ConversationBufferMemory
 from langchain_core.prompts import PromptTemplate
-__import__('pysqlite3')
-import sys
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
-AI_KEY = st.secrets['OPENAI_API_KEY']
-os.environ['OPENAI_API_KEY']  = AI_KEY
+
+#AI_KEY = st.secrets['OPENAI_API_KEY']
+#os.environ['OPENAI_API_KEY']  = OPENAI_API_KEY
 st.set_page_config(page_title="Crustdata API Assistant Bot")
 
 new_vector_store = FAISS.load_local(
