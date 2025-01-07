@@ -30,6 +30,7 @@ from langchain_core.prompts import PromptTemplate
 
 #AI_KEY = st.secrets['OPENAI_API_KEY']
 #os.environ['OPENAI_API_KEY']  = OPENAI_API_KEY
+
 st.set_page_config(page_title="Crustdata API Assistant Bot")
 
 new_vector_store = FAISS.load_local(
@@ -136,7 +137,7 @@ def final_bot_answer(curl_validated, original_response):
 def generate_response(prompt):
     try:
         res = retrieval_chain.invoke({
-            "input": prompt + ". If Possible please add curl request also for all the apis that you give in your response, Make sure you only provide curl request if it exists; don't make anything of your own."
+            "input": prompt + ". If user as for a example of api or ask for a example curl request then only please add curl request also for all the apis that you give in your response, Make sure you only provide curl request if it exists; don't make anything of your own. But if user does not ask for a curl request or an example please don't give that in reponse"
         })
         response = res["answer"]
         if "curl" in response:
