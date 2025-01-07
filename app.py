@@ -13,7 +13,7 @@ from langchain_openai import OpenAIEmbeddings, OpenAI, ChatOpenAI
 from langchain_core.tools import Tool
 from langchain_experimental.utilities import PythonREPL
 from crewai import Agent, Task, Crew, Process
-from crewai_tools import tool, BaseTool
+from crewai.tools import tool, BaseTool
 from langchain.chains import create_history_aware_retriever
 from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain_core.chat_history import BaseChatMessageHistory
