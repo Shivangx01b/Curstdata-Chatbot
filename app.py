@@ -137,7 +137,7 @@ def final_bot_answer(curl_validated, original_response):
 def generate_response(prompt):
     try:
         res = retrieval_chain.invoke({
-            "input": prompt + ". If user as for a example of curl request then only please add curl request  for all the apis that you give in your response, Make sure you only provide curl request if it exists; don't make anything of your own. But if user does not ask for a curl request or  don't give that in  your response please."
+            "input": prompt + ". Give example of curl request in you response if possible, Make sure you only provide curl request if it exists; don't make anything of your own. "
         })
         response = res["answer"]
         if "curl" in response:
@@ -151,14 +151,14 @@ def generate_response(prompt):
                     request_response = executor_agent(curl_to_python)
                     if "Failed to execute curl request as python code with error as" not in request_response:
                         print(f"[~] Request Response is : {request_response}")
-                        validated_curl = validate_curl(curl_data=curl_raw, curl_response=request_response)
-                        if "Failed to Validate curl request due to error" not in validated_curl:
-                        
-                            print(f"[~] Final Correct curl is : {validated_curl}")
-                            final_response = final_bot_answer(validated_curl, res["answer"])
-                            return final_response
-                        else:
-                            print(validated_curl)
+                        #validated_curl = validate_curl(curl_data=curl_raw, curl_response=request_response)
+                        #if "Failed to Validate curl request due to error" not in validated_curl:
+                        validated_curl = curl_raw
+                        print(f"[~] Final Correct curl is : {validated_curl}")
+                        final_response = final_bot_answer(validated_curl, res["answer"])
+                        return final_response
+                        #else:
+                        #    print(validated_curl)
                     else:
                         print(request_response)
                 else:
