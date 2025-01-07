@@ -137,7 +137,7 @@ def final_bot_answer(curl_validated, original_response):
 def generate_response(prompt):
     try:
         res = retrieval_chain.invoke({
-            "input": prompt + ". If user as for a example of api or ask for a example curl request then only please add curl request also for all the apis that you give in your response, Make sure you only provide curl request if it exists; don't make anything of your own. But if user does not ask for a curl request or an example please don't give that in reponse"
+            "input": prompt + ". If user as for a example of curl request then only please add curl request  for all the apis that you give in your response, Make sure you only provide curl request if it exists; don't make anything of your own. But if user does not ask for a curl request or  don't give that in  your response please."
         })
         response = res["answer"]
         if "curl" in response:
@@ -145,7 +145,7 @@ def generate_response(prompt):
             curl_raw = get_curl_back_from_response(response)
             if "Failed to get the raw curl from the original bot output" not in curl_raw:
                 print(f"[~] Parsed the curl request {curl_raw}")
-                curl_to_python = write_agent(curl_data=curl_raw, auth_token="Test1234")
+                curl_to_python = write_agent(curl_data=curl_raw, auth_token="Test1234") #auth token added dummy
                 if "Curl to Python conversion failed with error" not in curl_to_python:
                     print(f"[~] Curl 2 Python: {curl_to_python}")
                     request_response = executor_agent(curl_to_python)
@@ -253,22 +253,11 @@ def validate_curl(curl_data, curl_response, max_iterations=3):
             verbose=True
         )
 
+        
        
-        iteration = 0
-        
-        
-        while iteration < max_iterations:
-            result_of_validator = crew.kickoff(inputs={'curl_data': curl_data, 'curl_response': curl_response})
+        result_of_validator = crew.kickoff(inputs={'curl_data': curl_data, 'curl_response': curl_response})
+        return result_of_validator   
             
-            
-            if result_of_validator.get('status') == 'completed':
-                return result_of_validator
-            
-           
-            iteration += 1
-        
-        
-        return "Validation timed out after exceeding maximum iterations."
     
     except Exception as e:
         print(e)
